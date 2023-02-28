@@ -1,5 +1,8 @@
-import { useQuery, useMutation, useQueryClient, QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import axios from 'axios';
+import { useMutation } from '@tanstack/react-query';
 
-const login = () => {};
+const login = () => {
+  return axios.post('/login');
+};
 
-// const useLogin = useQuery()
+export const useLogin = () => useMutation(login);

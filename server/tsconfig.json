@@ -30,7 +30,13 @@
     ],
     "paths": {
       "@root/*": ["src/*"],
-      "@globals/*": ["src/globals/*"]
+      "@globals/*": ["src/globals/*"],
+      "@login/*": ["src/modules/Login/*"],
+      "@user/*": ["src/modules/User/*"],
+      "@libraries/*": ["src/globals/libraries/*"],
+      "@constants/*": ["src/globals/constants/*"],
+      "@decorators/*": ["src/globals/decorators/*"],
+      "@helpers/*": ["src/globals/helpers/*"]
     }
   }
 }

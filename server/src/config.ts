@@ -11,6 +11,8 @@ class Config {
   public COOKIE_SECRET_KEY_TWO: string | undefined;
   public SP_CLIENT_ID: string | undefined;
   public SP_CLIENT_SECRET: string | undefined;
+  public REDIRECT_URI: string | undefined;
+  public FRONTEND_URI: string | undefined;
 
   constructor() {
     this.JWT_TOKEN = process.env.JWT_TOKEN || '1234';
@@ -20,6 +22,8 @@ class Config {
     this.COOKIE_SECRET_KEY_TWO = process.env.COOKIE_SECRET_KEY_TWO;
     this.SP_CLIENT_ID = process.env.SP_CLIENT_ID;
     this.SP_CLIENT_SECRET = process.env.SP_CLIENT_SECRET;
+    this.REDIRECT_URI = process.env.REDIRECT_URI;
+    this.FRONTEND_URI = process.env.FRONTEND_URI;
   }
 
   public createLogger(name: string): bunyan {
