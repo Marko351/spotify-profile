@@ -1,7 +1,18 @@
-import React from 'react';
+import { FC, ReactElement, lazy } from 'react';
+import { Routes, Route } from 'react-router-dom';
 
-function App() {
-  return <div className="bg-background-dark min-h-screen font-SpaceMono relative overflow-hidden">App</div>;
-}
+const Login = lazy(() => import('./modules/Login/Login'));
+const Homepage = lazy(() => import('./modules/Layout/Homepage'));
+//font-SpaceMono
+const App: FC = (): ReactElement => {
+  return (
+    <div className="overflow-hidden">
+      <Routes>
+        <Route path="/login" element={<Login />}></Route>
+        <Route path="/" element={<Homepage />}></Route>
+      </Routes>
+    </div>
+  );
+};
 
 export default App;

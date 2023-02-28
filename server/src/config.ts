@@ -9,6 +9,8 @@ class Config {
   public CLIENT_URL: string | undefined;
   public COOKIE_SECRET_KEY_ONE: string | undefined;
   public COOKIE_SECRET_KEY_TWO: string | undefined;
+  public SP_CLIENT_ID: string | undefined;
+  public SP_CLIENT_SECRET: string | undefined;
 
   constructor() {
     this.JWT_TOKEN = process.env.JWT_TOKEN || '1234';
@@ -16,6 +18,8 @@ class Config {
     this.CLIENT_URL = process.env.CLIENT_URL || '';
     this.COOKIE_SECRET_KEY_ONE = process.env.COOKIE_SECRET_KEY_ONE;
     this.COOKIE_SECRET_KEY_TWO = process.env.COOKIE_SECRET_KEY_TWO;
+    this.SP_CLIENT_ID = process.env.SP_CLIENT_ID;
+    this.SP_CLIENT_SECRET = process.env.SP_CLIENT_SECRET;
   }
 
   public createLogger(name: string): bunyan {
