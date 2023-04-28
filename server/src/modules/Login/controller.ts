@@ -15,6 +15,18 @@ class Login extends BaseController {
     const state = generateRandomString(16);
     res.cookie('spotify_auth_state', state);
 
+    this.logger.info(
+      'ovde sam',
+      JSON.stringify(
+        querystring.stringify({
+          response_type: 'code',
+          client_id: this.config.SP_CLIENT_ID,
+          scope: scope,
+          redirect_uri: this.config.REDIRECT_URI,
+          state: state
+        })
+      )
+    );
     res.redirect(
       `https://accounts.spotify.com/authorize?${querystring.stringify({
         response_type: 'code',
@@ -27,6 +39,7 @@ class Login extends BaseController {
   }
 
   public async spotifyCallback(req: Request, res: Response) {
+    console.log('OVDE SAM');
     const { code, state } = req.query;
     const storedState = req.cookies ? req.cookies['spotify_auth_state'] : null;
 

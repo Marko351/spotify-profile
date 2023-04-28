@@ -3,7 +3,7 @@ import { login } from './controller';
 
 const loginRouter = Router();
 
-loginRouter.post('/', login.login.bind(login));
-loginRouter.post('/callback', login.spotifyCallback.bind(login));
+loginRouter.get('/', login.login.bind(login));
+loginRouter.get('/callback', login.spotifyCallback.bind(login));
 
 export { loginRouter };

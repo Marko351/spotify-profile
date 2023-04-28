@@ -1,0 +1,55 @@
+services:
+  server:
+    container_name: spotify-server
+    build:
+      context: ./server
+      dockerfile: server.Dockerfile
+    restart: always
+    # ports:
+    #   - '3006:3006'
+    volumes:
+      - ./server:/app
+      - /app/node_modules
+    environment:
+      - NODE_ENV=development
+    env_file:
+      - ./server/.env
+    networks:
+      - spotify-net
+    command: npm run dev
+
+  client:
+    build:
+      context: ./client
+      dockerfile: client.Dockerfile
+    container_name: spotify-client
+    # ports:
+    #   - '3010:3010'
+    depends_on:
+      - server
+    environment:
+      - NODE_ENV=development
+    volumes:
+      - ./client:/app
+      - /app/node_modules
+    networks:
+      - spotify-net
+    command: npm run dev
+
+  nginx:
+    image: nginx:latest
+    container_name: spotify-nginx
+    restart: unless-stopped
+    volumes:
+      - ./nginx/default.conf:/etc/nginx/conf.d/default.conf:ro
+    ports:
+      - '3011:80'
+    networks:
+      - spotify-net
+    depends_on:
+      - client
+      - server
+
+networks:
+  spotify-net:
+    driver: bridge
